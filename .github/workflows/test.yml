@@ -1,6 +1,8 @@
 name: Test
 
 on:
+  release:
+    types: [published]
   schedule:
     - cron: 15,45 0-18 * * *
   push:
@@ -83,3 +85,9 @@ jobs:
             TVBoxOSC/${{ env.commitS }}-source.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name : Upload packages
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: Padavan-packages
+          path: TVBoxOSC/apk/
