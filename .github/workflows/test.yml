@@ -31,7 +31,10 @@ jobs:
           git clone ${{ env.upstreamCode }} TVBoxOSC
           cd TVBoxOSC
           git checkout ${{ env.commit }}
-          echo "tag=$(git log --date=format:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
+          echo "tag=$(git log --date=fo
+          
+          
+          at:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
           zip -q -x ".git/*" -r ${{ env.commitS }}-source.zip .
       - name: Release Apk Sign
         if: ${{ env.commit }}
@@ -106,7 +109,7 @@ jobs:
       - name: Push to master
         if: ${{ env.commit }}
         run: |
-          rm -rf TVBoxOSC
+          #rm -rf TVBoxOSC
           sed -i "/Updated Commit/c\\+ Updated Commit: ${{ env.commit }}" README.md
           sed -i '/url =/d' ./.git/config
           git config --local user.name "github-actions[bot]"
