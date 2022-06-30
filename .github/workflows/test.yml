@@ -3,8 +3,8 @@ name: Test
 on:
   release:
     types: [published]
-  schedule:
-    - cron: 15,45 0-18 * * *
+  #schedule:
+   # - cron: 15,45 0-18 * * *
   push:
     branches:
       - master
